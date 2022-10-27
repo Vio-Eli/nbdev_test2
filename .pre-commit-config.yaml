@@ -7,15 +7,20 @@ repos:
             name: Modified Notebooks
             files: .ipynb
     # Clean usueless Notebook metadata that adds extra changes and conflicts - eg: cell run counts:
-    -   repo: local
+#    -   repo: local
+#        hooks:
+#        -   id: nbdev_clean_nbs
+#            name: Clean Notebooks
+#            entry: nbdev_clean_nbs
+#            additional_dependencies: [nbdev>=1.1.22, "black[jupyter]>=21.9b0"]
+#            files: .ipynb
+#            pass_filenames: false
+#            language: python
+    -   repo: https://github.com/fastai/nbdev
+        rev: 2.3.7
         hooks:
-        -   id: nbdev_clean_nbs
-            name: Clean Notebooks
-            entry: nbdev_clean_nbs
-            additional_dependencies: [nbdev>=1.1.22, "black[jupyter]>=21.9b0"]
+        -   id: nbdev_clean
             files: .ipynb
-            pass_filenames: false
-            language: python
     # Convert the notebooks into python scripts and format them with black, one file at a time with xargs:
     -   repo: local
         hooks:
