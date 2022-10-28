@@ -6,7 +6,24 @@ repos:
         -   id: identity
             name: Modified Notebooks
             files: .ipynb
-    # Clean usueless Notebook metadata that adds extra changes and conflicts - eg: cell run counts:
+    # Clean useless Notebook metadata that adds extra changes and conflicts - eg: cell run counts:
+#    -   repo: local
+#        hooks:
+#        -   id: nb-clean
+#            name: Clean Notebooks
+#            entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --to=notebook --stdin --stdout --log-level=ERROR
+#            language: python
+#            types: [file]
+#            files: .ipynb
+    - repo: https://github.com/srstevenson/nb-clean
+      rev: 2.3.0
+      hooks:
+      - id: nb-clean
+        name: NbClean Notebooks
+        args:
+        -   --remove-empty-cells
+        files: .ipynb
+
 #    -   repo: local
 #        hooks:
 #        -   id: nbdev_clean_nbs
@@ -20,7 +37,7 @@ repos:
         rev: 2.3.7
         hooks:
         -   id: nbdev_clean
-            name: Clean Notebooks
+            name: Nbdev Clean Notebooks
             files: .ipynb
 
     # Convert the notebooks into python scripts and format them with black, one file at a time with xargs:
