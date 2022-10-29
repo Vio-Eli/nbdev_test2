@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: b4ef974d-e4be-49a3-ae66-a7d885c72a90
+      url: 'https://quartopub.com/sites/vio/nbdev_test2'
